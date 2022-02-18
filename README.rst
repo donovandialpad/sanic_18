@@ -7,14 +7,23 @@ Sanic is a Python 3.7+ web server and web framework that’s written to go fast.
 sanic-babel is an extension to Sanic that adds i18n and l10n support to any Sanic application with the help of babel, pytz and speaklater. It has builtin support for date formatting with timezone support as well as a very simple and friendly interface to gettext translations.
 
 
-.. code-block:: php
+.. code-block:: python
 
    @app.get("/")
    async def index(request):
    response = gettext('Please translate me, I am a message!', request=request) + ' ' + gettext('My name is %(name)s.',
                                                                                                 name='Donovan',
-
                                                                                          request=request)
+sanic babel locale
+----------
+
+.. code-block:: python
+
+   @babel.localeselector
+   def get_locale(request):
+    langs = request.headers.get('accept-language')
+    if langs:
+        return langs.split(';')[0].split(',')[0].replace('-', '_')
 
 Installing
 ----------
