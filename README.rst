@@ -31,6 +31,10 @@ Installing
 .. code-block:: text
 
    $ pip install -i requirements.txt
+   
+.. code-block:: text
+
+   $ sanic server.app
 
 Babel usage
 ----------
