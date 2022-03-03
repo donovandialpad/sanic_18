@@ -1,0 +1,15 @@
+{
+  "app": {
+    "title": "Imagenes asombrosas",
+    "user_greeting": "Hola, {name}"
+  },
+  "nav": {
+    "home": "Inicio",
+    "about": "Conocenos"
+  },
+  "landscape": {
+    "likes": "A nadie ❤️ esto aun 😕 | {n} personas ❤️ esto | {n} personas ❤️ esto",
+    "added": "Agregado"
+  },
+  "footer": "Construido con Vue y Vue I18n{0}>Creado con un excesivo consumo de cafe"
+}

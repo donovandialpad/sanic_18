@@ -1,8 +1,36 @@
+<template>
+  <div id="app">
+    <div v-if="isLoading">Loading...</div>
+    <div v-else>
+      <Nav />
+      <div class="container">
+      <router-view />
+        <div class="">
+          <p>BABEL {{ message.message }}</p>
+        </div>
+      </div>
+      <Footer />
+    </div>
+  </div>
+</template>
+
+
 <script>
+import Nav from "@/components/Nav.vue"
+import Footer from "@/components/Footer.vue"
+import EventBus from "@/EventBus"
+import {
+  setDocumentDirectionPerLocale,
+  setDocumentLang,
+  setDocumentTitle
+} from "@/util/i18n/document"
+import { loadLocaleMessagesAsync } from "@/i18n"
 export default {
+  components: { Nav, Footer },
   data() {
     return {
       message: 'Hello World!',
+      isLoading: true
     }
   },
   methods: {
@@ -14,14 +42,26 @@ export default {
   },
   created() {
     this.getList()
-  }
+  },
+  mounted() {
+    EventBus.$on("i18n-load-start", () => (this.isLoading = true))
+    EventBus.$on("i18n-load-complete", () => (this.isLoading = false))
+  },
 }
 </script>
 
-<template>
-  <div class="">
-    <p>i18n {{ $t('message.hello') }}</p>
-    <p>BABEL {{ message.message }}</p>
-  </div>
-</template>
 
+<style>
+body {
+  margin: 0;
+}
+#app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+}
+#app .container {
+  padding: 1rem;
+}
+</style>

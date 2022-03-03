@@ -1,7 +1,9 @@
+import os
+import json
 from sanic import Sanic
 from sanic_babel import Babel
 from sanic_babel import gettext
-from sanic.response import json
+from sanic.response import json as sanic_json
 from cors import add_cors_headers
 from options import setup_options
 
@@ -10,12 +12,23 @@ app = Sanic("App")
 babel = Babel(app, configure_jinja=False)
 
 
+def get_data_json():
+    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    json_url = os.path.join(SITE_ROOT, "./static", "data.json")
+    return json.load(open(json_url))
+
+
 @app.get("/")
 async def index(request):
     response = gettext('Please translate me, I am a message!', request=request) + ' ' + gettext('My name is %(name)s.',
                                                                                                 name='Donovan',
                                                                                                 request=request)
-    return json({'message': response})
+    return sanic_json({'message': response})
+
+
+@app.get("/get_data")
+async def get_data(request):
+    return sanic_json(get_data_json())
 
 @babel.localeselector
 def get_locale(request):
