@@ -1,4 +1,4 @@
-Sanic Babel
+Sanic Babel And Vue i18n
 =====
 
 
@@ -55,3 +55,28 @@ To compile the translations for use, pybabel helps again:
 .. code-block:: text
 
    $ pybabel compile -d translations
+
+Vue and vue-i18n
+----------
+https://kazupon.github.io/vue-i18n/
+
+Vue I18n is internationalization plugin of Vue.js. It easily integrates some localization features to your Vue.js Application.
+
+.. code-block:: text
+
+   $ cd vue-i18n
+
+install npm packages
+
+.. code-block:: text
+
+   $ npm install
+
+Run dev server
+
+.. code-block:: text
+
+   $ npm run dev
+
+Go to http://localhost:3000 and vue will automatically redirect you to http://localhost:3000/en
+can you change you language to Spanish
