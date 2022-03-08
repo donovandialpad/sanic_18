@@ -1,7 +1,8 @@
 import os
 import json
+from datetime import datetime
 from sanic import Sanic
-from sanic_babel import Babel
+from sanic_babel import Babel, format_datetime
 from sanic_babel import gettext
 from sanic.response import json as sanic_json
 from cors import add_cors_headers
@@ -23,16 +24,18 @@ async def index(request):
     response = gettext('Please translate me, I am a message!', request=request) + ' ' + gettext('My name is %(name)s.',
                                                                                                 name='Donovan',
                                                                                                 request=request)
-    return sanic_json({'message': response})
+    babel_date = format_datetime(datetime.now(), 'full', request=request)
+    return sanic_json({'message': response, 'date': babel_date})
 
 
 @app.get("/get_data")
 async def get_data(request):
     return sanic_json(get_data_json())
 
+
 @babel.localeselector
 def get_locale(request):
-    return 'es'
+    return 'en'
     langs = request.headers.get('accept-language')
     if langs:
         return langs.split(';')[0].split(',')[0].replace('-', '_')
@@ -40,9 +43,8 @@ def get_locale(request):
 
 @babel.timezoneselector
 def get_timezone(request):
-    if request['current_user'] is not None:
-        return request['current_user'].timezone
-
+    return 'America/Mexico_City'
+    #return 'Canada/Pacific'
 
 # Add OPTIONS handlers to any route that is missing it
 app.register_listener(setup_options, "before_server_start")
