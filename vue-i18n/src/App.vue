@@ -4,10 +4,10 @@
     <div v-else>
       <Nav />
       <div class="container">
-      <router-view />
-        <div class="">
+      <div class="">
           <p>BABEL {{ message.message }}</p>
         </div>
+      <router-view />
       </div>
       <Footer />
     </div>

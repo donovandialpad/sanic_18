@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-02-17 13:20-0600\n"
+"POT-Creation-Date: 2022-03-07 22:14-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: /Users/donovanvargas/sanic_18/server.py:12
+#: server.py:23
 msgid "Please translate me, I am a message!"
 msgstr ""
 
-#: /Users/donovanvargas/sanic_18/server.py:12
+#: server.py:23
 #, python-format
 msgid "My name is %(name)s."
 msgstr ""
