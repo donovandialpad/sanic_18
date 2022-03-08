@@ -32,7 +32,7 @@ async def get_data(request):
 
 @babel.localeselector
 def get_locale(request):
-    return 'it'
+    return 'es'
     langs = request.headers.get('accept-language')
     if langs:
         return langs.split(';')[0].split(',')[0].replace('-', '_')
