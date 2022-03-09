@@ -6,6 +6,7 @@
       <div class="container">
       <div class="">
           <p>BABEL {{ message.message }}</p>
+          <p>{{ message.date }}</p>
         </div>
       <router-view />
       </div>
